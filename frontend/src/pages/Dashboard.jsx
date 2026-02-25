@@ -233,6 +233,33 @@ export default function Dashboard({ seniorId }) {
     if (hours < 18) return "nachmittag";
     return "abend";
   };
+  const getCategoryStyles = (category) => {
+    switch (category) {
+      case "morgen":
+        return {
+          container:
+            "bg-gradient-to-br from-yellow-50 via-orange-50 to-amber-100 border border-yellow-200",
+          title: "text-amber-700",
+        };
+      case "nachmittag":
+        return {
+          container:
+            "bg-gradient-to-br from-orange-100 via-orange-200 to-pink-100 border border-orange-300",
+          title: "text-orange-800",
+        };
+      case "abend":
+        return {
+          container:
+            "bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 border border-indigo-200",
+          title: "text-indigo-700",
+        };
+      default:
+        return {
+          container: "",
+          title: "",
+        };
+    }
+  };
 
   const categorizedMedications = useMemo(() => {
     const categories = { morgen: [], nachmittag: [], abend: [] };
@@ -285,10 +312,15 @@ export default function Dashboard({ seniorId }) {
             (m) => !takenMedications.some((t) => t.id === m.id),
           );
           if (meds.length === 0) return null;
-
+          const styles = getCategoryStyles(category);
           return (
-            <div key={category} className="space-y-4">
-              <h2 className="text-xl font-semibold capitalize">
+            <div
+              key={category}
+              className={`space-y-4 p-6 rounded-2xl shadow-sm ${styles.container}`}
+            >
+              <h2
+                className={`text-xl font-semibold capitalize ${styles.title}`}
+              >
                 {category} - Active
               </h2>
 

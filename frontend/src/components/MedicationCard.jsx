@@ -81,7 +81,7 @@ export default function MedicationCard({
               transition hover:bg-green-700 active:scale-[0.97] disabled:opacity-50 flex items-center justify-center gap-2
             "
           >
-            ✅ I took it
+            ✅ Ich habe es  eingenommen 
           </button>
 
           <button
@@ -92,7 +92,7 @@ export default function MedicationCard({
               transition hover:bg-red-200 active:scale-[0.97] disabled:opacity-50 flex items-center justify-center gap-2
             "
           >
-            ⚠️ Skip
+            ⚠️ Überspringen
           </button>
         </div>
       )}
